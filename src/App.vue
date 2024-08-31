@@ -27,7 +27,12 @@ const showTemporalInputs = (type:TimeCalculatorParams) => {
   const currentType = timeCalculator.getTypeIndex(type);
   const paramType = timeCalculator.getTypeIndex(temporalViewNumberResultType.value);
 
-  return (currentType >= paramType)
+  if (currentType >= paramType) {
+    return true;
+  } else {
+    temporalViewInput.value[type] = 0;
+    return false;
+  }
 }
 
 const calculateIntInputs = () => {
