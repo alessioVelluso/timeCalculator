@@ -23,7 +23,12 @@ const timeCalculator = new TimeCalculator();
 // --- Methods
 const isNumberInvalid = (val:number):boolean => val % 1 !== 0
 const showTemporalValue = (value?:number) => (value && value > 0) ;
+const showTemporalInputs = (type:TimeCalculatorParams) => {
+  const currentType = timeCalculator.getTypeIndex(type);
+  const paramType = timeCalculator.getTypeIndex(temporalViewNumberResultType.value);
 
+  return (currentType >= paramType)
+}
 
 const calculateIntInputs = () => {
   if (isNumberInvalid(numberViewInput.value)) return;
@@ -34,7 +39,11 @@ const calculateIntInputs = () => {
 
 
 const updateTemporalInputs = (value:number | undefined, type:TimeStampType) => {
-  temporalViewInput.value[type] = value;
+  console.log(temporalViewInput.value);
+  temporalViewInput.value[type] = value ?? 0;
+  if (Object.values(temporalViewInput.value).some(x => isNumberInvalid(x))) return;
+
+
   calculateTemporalInput();
 }
 
@@ -80,24 +89,29 @@ const calculateTemporalInput = () => {
     <template v-else>
 
       <TimeStampInput type="weeks":value="temporalViewInput.weeks" @updateValue="updateTemporalInputs"/>
-      <TimeStampInput type="days" :value="temporalViewInput.days" @updateValue="updateTemporalInputs"/>
-      <TimeStampInput type="hours" :value="temporalViewInput.hours" @updateValue="updateTemporalInputs"/>
-      <TimeStampInput type="minutes" :value="temporalViewInput.minutes" @updateValue="updateTemporalInputs"/>
-      <TimeStampInput type="seconds" :value="temporalViewInput.seconds" @updateValue="updateTemporalInputs"/>
-      <TimeStampInput type="milliseconds" :value="temporalViewInput.milliseconds" @updateValue="updateTemporalInputs"/>
+      <TimeStampInput v-if="showTemporalInputs('days')" type="days" :value="temporalViewInput.days" @updateValue="updateTemporalInputs"/>
+      <TimeStampInput v-if="showTemporalInputs('hours')" type="hours" :value="temporalViewInput.hours" @updateValue="updateTemporalInputs"/>
+      <TimeStampInput v-if="showTemporalInputs('minutes')" type="minutes" :value="temporalViewInput.minutes" @updateValue="updateTemporalInputs"/>
+      <TimeStampInput v-if="showTemporalInputs('seconds')" type="seconds" :value="temporalViewInput.seconds" @updateValue="updateTemporalInputs"/>
+      <TimeStampInput v-if="showTemporalInputs('milliseconds')" type="milliseconds" :value="temporalViewInput.milliseconds" @updateValue="updateTemporalInputs"/>
 
-      <div class="row" style="justify-content: center; margin-top: 6rem;">
-        <p style="width: 100%; text-align: center; margin-bottom: 0.5rem;">RESULT</p>
-        <input type="number" v-model="temporalViewNumberResult" disabled/>
-        <select v-model="temporalViewNumberResultType" @change="calculateTemporalInput()">
-          <option value="milliseconds">ms</option>
-          <option value="seconds">s</option>
-          <option value="minutes">m</option>
-          <option value="hours">h</option>
-          <option value="days">d</option>
-          <option value="weeks">w</option>
-        </select>
-      </div>
+      <template v-if="Object.values(temporalViewInput).some(x => isNumberInvalid(x))">
+        <p style="width: 100%; text-align: center; margin-bottom: 0.5rem;">Insert valid values</p>
+      </template>
+      <template v-else>
+        <div class="row" style="justify-content: center; margin-top: 6rem;">
+          <p style="width: 100%; text-align: center; margin-bottom: 0.5rem;">RESULT</p>
+          <input type="number" v-model="temporalViewNumberResult" disabled/>
+          <select v-model="temporalViewNumberResultType" @change="calculateTemporalInput()">
+            <option value="milliseconds">ms</option>
+            <option value="seconds">s</option>
+            <option value="minutes">m</option>
+            <option value="hours">h</option>
+            <option value="days">d</option>
+          </select>
+        </div>
+      </template>
+
 
     </template>
   </Container>

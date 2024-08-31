@@ -79,7 +79,7 @@ export class TimeCalculator {
         return { seconds, minutes, hours, days, weeks }
     }
 
-    private getTypeIndex(type:TimeCalculatorParams):number {
+    public getTypeIndex(type:TimeCalculatorParams):number {
         switch(type) {
             case "milliseconds": return 0;
             case "seconds": return 1;
