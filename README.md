@@ -1,5 +1,18 @@
-# Vue 3 + TypeScript + Vite
+# Time Calculator
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+The app is made in vue3 + ts + rust tauri.
+You can download the `TimeCalculator.exe` directly from this repo.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+If you want to customize it but don't have rust, you can work with this repo directly on the web like a normal vue project.
+To do that, navigate on the root of the project and `npm install` then `npm run dev`
+
+If you have rust and want to work in tauri, `npm run tauri dev`.
+Once you finished and want a sharable .exe, `npm run tauri build`.
+
+The final product will be found in `./src-tauri/target/release/TimeCalculator.exe`
+
+
+![screenshot](.previews/Preview_1.png)
+![screenshot](.previews/Preview_2.png)
+![screenshot](.previews/Preview_3.png)
+![screenshot](.previews/Preview_4.png)
