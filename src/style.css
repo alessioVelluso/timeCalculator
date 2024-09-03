@@ -47,6 +47,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  /* color: inherit; */
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -65,13 +66,22 @@ button:focus-visible {
 input {
   font-size: 1.2rem;
   padding: 0.3rem;
+  /* background-color: inherit;
+  color: inherit;
+  border: 1px solid #888; */
 }
 input:focus-visible {
   outline: -webkit-focus-ring-color auto 1px;
 }
 select {
   padding: 0.3rem;
+  /* background-color: inherit;
+  color: inherit; */
 }
+/* option {
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+} */
 
 .row {
   width: 100%;
@@ -79,15 +89,15 @@ select {
   flex-wrap: wrap;
 }
 
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #213547 !important;
+    background-color: #ffffff !important;
   }
   a:hover {
-    color: #747bff;
+    color: #747bff !important;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9 !important;
   }
-}
+} */
