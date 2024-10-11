@@ -1,0 +1,8 @@
+:root {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.pointer {
+    cursor:pointer;
+}
