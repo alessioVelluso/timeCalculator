@@ -1,23 +1,27 @@
 import { ThemeDefinition } from "vuetify";
 
-export const themes:Record<string, ThemeDefinition> =
+export const theme: { defaultTheme?: 'dark' | 'light', themes:Record<string, ThemeDefinition> } =
 {
-    dark:{
-        dark:true,
-        colors:
-        {
-            primary: "#fcff64",
-            secondary: "#d3a9eb",
-            background: '#000000',
-            surface: '#000000',
+    defaultTheme: 'dark',
+    themes: {
+        dark:{
+            dark:true,
+            colors:
+            {
+                primary: "#fcff64",
+                secondary: "#d3a9eb",
+                background: '#000000',
+                surface: '#080808',
+            }
+        },
+        light: {
+            dark:false,
+            colors:
+            {
+                background: '#FDFDFD',
+                surface: '#F6F6F6',
+                // primary: '#367866'
+            }
         }
-    },
-    // light: {
-    //     dark:false,
-    //     colors:
-    //     {
-    //         background: '#FFFFFF',
-    //         surface: '#FFFFFF',
-    //     }
-    // }
+    }
 }

@@ -5,20 +5,17 @@ import * as directives from 'vuetify/directives'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import 'vuetify/styles'
 import './style.css'
-import { themes } from './theme'
+import { theme } from './theme'
 
 
 
 export const vuetify = createVuetify({
     components,
     directives,
+    theme,
     icons: {
         defaultSet: 'mdi',
         aliases,
         sets: { mdi },
-    },
-    theme: {
-        defaultTheme: 'dark',
-        themes
     }
 })

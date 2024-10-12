@@ -6,3 +6,8 @@
 .pointer {
     cursor:pointer;
 }
+.lefty input {
+    text-align: end;
+}
+.groupy .left .v-field { border-radius: 4px 0 0 4px; }
+.groupy .right .v-field { border-radius: 0 4px 4px 0; }
